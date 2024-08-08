@@ -1,3 +1,4 @@
+<!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
 session_start();
@@ -28,6 +29,7 @@ if (isset($_GET['orderType']) === false) {
     <head>
     <?php require_once "bootstrap.php"; ?>
     <?php echo "<title>" . htmlentities($_SESSION['user_name']) . "'s ToDos::View Page</title>";?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="container">

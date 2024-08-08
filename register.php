@@ -1,3 +1,4 @@
+<!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
 
@@ -96,6 +97,7 @@ if ( isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['pass_a']) 
 <head>
 <?php require_once "bootstrap.php"; ?>
 <title>openToDo::WEB - Register Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">

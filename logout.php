@@ -1,3 +1,4 @@
+<!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
     session_start();
     if (isset($_SESSION['user_name']) === false) {
