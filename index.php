@@ -1,3 +1,4 @@
+<!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
     session_start();
 ?>
@@ -6,6 +7,7 @@
 <head>
 <title>openToDo::WEB - Welcome Page</title>
 <?php require_once "bootstrap.php"; ?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="container">
@@ -22,8 +24,13 @@
         }
         if ( isset($_SESSION['user_name']) === true) {
             echo "<h3>Hello, " . htmlentities($_SESSION['user_name']) . "</h3>\n";
-            echo '<h5><a href = "otd_view.php">Dive Into Your ToDos!</a></h5>';
-            echo '<p><a href="logout.php">Logging out</a></p>';
+            echo "<ul>";
+            echo '<li><h5><a href = "otd_view.php">Dive Into Your ToDos!</a></h5></li>';
+            echo '<li><h5><a href = "otd_shareBoard_create.php">Create shareBoard</a></h5></li>';
+            echo '<li><h5><a href = "otd_shareBoard_join.php">Join shareBoard</a></h5></li>';
+            echo '<li><h5><a href = "otd_shareBoard_list.php">My shareBoards lists</a></h5></li>';
+            echo '<li><p><a href="logout.php">Logging out</a></p></li>';
+            echo "</ul>";
         } else {
             echo '<p><a href="login.php">Please Log In</a></p>';
         }
