@@ -1,13 +1,11 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
+
 session_start();
 
-if (isset($_SESSION['user_id']) === false) {
-    $_SESSION['failure'] = "Not logged in";
-    header("Location: index.php");
-    return;
-}
+checkIfLoggedIn();
 
 $query = $pdo->prepare("SELECT * FROM Todos WHERE todo_id = :tid");
 $query->execute(array(":tid" => $_GET['todo_id']));
@@ -31,11 +29,11 @@ $usr_todo_id = htmlentities($row['todo_id']);
 if (isset($_POST['save'])) {
     if (strlen($_POST['date']) < 1 || strlen($_POST['title']) < 1 || strlen($_POST['details']) < 1 || strlen($_POST['priority']) < 1) {
         $_SESSION['failure'] = "All fields are required";
-        header("Location: otd_add.php?todo_id=" . $_POST['todo_id']);
+        header("Location: otd_edit.php?todo_id=" . $_POST['todo_id']);
         return;
     } else if (strlen($_POST['title']) > 120 || strlen($_POST['details']) > 500) {
         $_SESSION['failure'] = "Strings too long";
-        header("Location: otd_add.php?todo_id=" . $_POST['todo_id']);
+        header("Location: otd_edit.php?todo_id=" . $_POST['todo_id']);
         return;
     } else {
         $sql = "UPDATE Todos SET title = :tl, details = :dl, date_info = :di, priority = :pn WHERE todo_id = :tid";

@@ -1,13 +1,11 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
 session_start();
 
-if (isset($_SESSION['user_id']) === false) {
-    $_SESSION['failure'] = "Not logged in";
-    header("Location: index.php");
-    return;
-}
+// check
+checkIfLoggedIn();
 
 if (isset($_POST['sort'])) {
     header("Location: otd_view.php?orderType=" . htmlentities($_POST['orderType']));

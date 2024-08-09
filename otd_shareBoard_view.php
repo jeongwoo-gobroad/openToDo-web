@@ -115,8 +115,8 @@ $shareBoard_title = htmlentities($row['shareBoard_title']);
                         echo(htmlentities($row['priority']));
                         echo("</td><td>");
                         if ($_SESSION['user_key'] == $row['user_id']) {
-                            echo('<a href="otd_shareBoard_edit.php?todo_id='.$row['todo_id'].'">Edit</a> / ');
-                            echo('<a href="otd_shareBoard_del.php?todo_id='.$row['todo_id'].'">Delete</a>');
+                            echo('<a href="otd_shareBoard_edit.php?todo_id=' .$row['todo_id']. '&board=' . $shareBoard_id . '">Edit</a> / ');
+                            echo('<a href="otd_shareBoard_del.php?todo_id=' .$row['todo_id']. '&board=' . $shareBoard_id . '">Delete</a>');
                         }
                         echo("</td></tr>\n");
                     } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));
@@ -157,8 +157,8 @@ $shareBoard_title = htmlentities($row['shareBoard_title']);
                         echo("</td><td>");
                         echo(htmlentities($row['priority']));
                         echo("</td><td>");
-                        echo('<a href="otd_shareBoard_edit.php?todo_id='.$row['todo_id'].'">Edit</a> / ');
-                        echo('<a href="otd_shareBoard_del.php?todo_id='.$row['todo_id'].'">Delete</a>');
+                        echo('<a href="otd_shareBoard_edit.php?todo_id=' .$row['todo_id'].  '&board=' . $shareBoard_id .  '">Edit</a> / ');
+                        echo('<a href="otd_shareBoard_del.php?todo_id=' .$row['todo_id'].  '&board=' . $shareBoard_id .  '">Delete</a>');
                         echo("</td></tr>\n");
                     } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));
                 }

@@ -1,20 +1,9 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
 
 session_start();
-
-function doesEmailAlreadyExists($email, $db) {
-    $stmt = $db->prepare("SELECT user_email FROM Users WHERE user_email = :em");
-    $stmt->execute(array(':em' => $email));
-    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($rows != null) {
-        return true;
-    }
-
-    return false;
-}
 
 if ( isset($_SESSION['user_id'] ) ) {
     header("Location: index.php");

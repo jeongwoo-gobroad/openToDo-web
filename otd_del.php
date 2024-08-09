@@ -1,13 +1,11 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
+
 session_start();
 
-if (isset($_SESSION['user_id']) === false) {
-    $_SESSION['failure'] = "Not logged in";
-    header("Location: index.php");
-    return;
-}
+checkIfLoggedIn();
 
 if (isset($_POST['cancel'])) {
     header('Location: otd_view.php');
@@ -15,12 +13,12 @@ if (isset($_POST['cancel'])) {
 }
 
 if (isset($_POST['delete']) && isset($_POST['todo_id'])) {
-    $query = "DELETE FROM Todos WHERE todo_id = :tid";
+    $query = "DELETE FROM shareBoard_todos WHERE todo_id = :tid";
     $stmt = $pdo->prepare($query);
     $stmt->execute(array(':tid' => $_POST['todo_id']));
 
     $_SESSION['success'] = "Record deleted";
-    header('Location: otd_view.php');
+    header('Location: otd_shareBoard_view.php');
 
     return;
 } else {

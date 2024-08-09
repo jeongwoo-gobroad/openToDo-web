@@ -1,24 +1,9 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
 
 session_start();
-
-function isVaildLogin($email, $pass, $db) {
-    $query = $db->prepare("SELECT user_name, user_id FROM Users WHERE user_email = :em AND user_password = :pa");
-    $query->execute(array(':em' => $email, ':pa' => $pass));
-    $row   = $query->fetch(PDO::FETCH_ASSOC);
-
-    if ($row != null) {
-        $_SESSION['user_id'] = htmlentities($email);
-        $_SESSION['user_name'] = htmlentities($row['user_name']);
-        $_SESSION['user_key'] = $row['user_id'];
-
-        return true;
-    }
-
-    return false;
-}
 
 if ( isset($_SESSION['user_id'] ) ) {
     header("Location: index.php");
