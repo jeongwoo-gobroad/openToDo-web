@@ -13,12 +13,12 @@ if (isset($_POST['cancel'])) {
 }
 
 if (isset($_POST['delete']) && isset($_POST['todo_id'])) {
-    $query = "DELETE FROM shareBoard_todos WHERE todo_id = :tid";
+    $query = "DELETE FROM Todos WHERE todo_id = :tid";
     $stmt = $pdo->prepare($query);
     $stmt->execute(array(':tid' => $_POST['todo_id']));
 
     $_SESSION['success'] = "Record deleted";
-    header('Location: otd_shareBoard_view.php');
+    header('Location: otd_view.php');
 
     return;
 } else {

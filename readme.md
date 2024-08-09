@@ -33,3 +33,7 @@
     0.2.1
         - shareBoard admin privilege feature: board title edit, board deletion features has been implemented.
         - minor typo fix
+
+
+    0.2.2
+        - minor bug fix
