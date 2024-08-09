@@ -165,6 +165,13 @@ $shareBoard_title = htmlentities($row['shareBoard_title']);
                 ?>
                 </table>
             </p>
+            <?php
+            if ($is_admin === true) {
+                echo("<p>");
+                echo("<ul><li>" . '<a href = "otd_shareBoard_adminPage.php?board=' . $shareBoard_id . '">Admin page' . "</a></li></ul>");
+                echo("</p>");
+            }
+            ?>
         </div>
     </body>
 </html>
