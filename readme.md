@@ -28,3 +28,8 @@
         - shareBoard edit, delete, admin privilege feature implemented.
         - The basic validation logic of the personal todo management system has been modularized into functions and converted into an API.
         - Please refer to APIs.md if you are interested.
+
+    
+    0.2.1
+        - shareBoard admin privilege feature: board title edit, board deletion features has been implemented.
+        - minor typo fix
