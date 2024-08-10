@@ -6,6 +6,8 @@
 > This is a project in the continuation of the terminal-based openToDo.
 > Based on php 7.4, MariaDB 10, phpMyAdmin 5.2.1.
 
+Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo_web/
+
 > Prerequisities
 >> 1. Your own web server.
 >> 2. Your own database.
