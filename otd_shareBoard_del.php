@@ -1,13 +1,12 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
+require_once "otd_shareBoard_validation_api.php";
+
 session_start();
 
-if (isset($_SESSION['user_id']) === false) {
-    $_SESSION['failure'] = "Not logged in";
-    header("Location: index.php");
-    return;
-}
+checkIfLoggedIn();
 
 $shareBoard_id = false;
 $todo_id = false;
@@ -16,25 +15,17 @@ $is_admin = false;
 $is_personal = false;
 
 // Basic check
-if (isset($_GET['board']) === false || isset($_GET['todo_id']) === false) {
-    $_SESSION['failure'] = "Board id or Todo id doesn't exist";
-    header("Location: index.php");
+$shareBoard_id = checkGetBoardDataExists();
+if ($shareBoard_id === false) {
     return;
-} else {
-    $shareBoard_id = $_GET['board'];
-    $todo_id = $_GET['todo_id'];
+}
+$todo_id = checkGetTodoExists();
+if ($todo_id === false) {
+    return;
 }
 
 // Validation #1: Able to see this board?
-$query = "SELECT user_role FROM shareBoard_users WHERE shareBoard_id = :sbid AND user_id = :usid";
-$stmt  = $pdo->prepare($query);
-$stmt->execute(
-    array(
-        ':sbid' => $shareBoard_id,
-        ':usid' => $_SESSION['user_key']
-    )
-);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$row = checkBoardAccessPermission($pdo, $shareBoard_id);
 if ($row == false) {
     $_SESSION['failure'] = "You have no permission to view this very board or board id doesn't exist";
     header("Location: index.php");
@@ -46,36 +37,12 @@ if ($row == false) {
 }
 
 // Validation #2: Able to edit this record?
-$query = "SELECT is_shared, user_id FROM shareBoard_todos WHERE todo_id = :tid";
-$stmt  = $pdo->prepare($query);
-$stmt->execute(
-    array(
-        ':tid' => $todo_id
-    )
-);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($row['is_shared'] == 0 && $row['user_id'] != $_SESSION['user_key']) {
-    $_SESSION['failure'] = "You have no permission to delete this todo";
-    header("Location: index.php");
+if (checkUserAbleToAlter($pdo, $todo_id) === false) {
     return;
 }
 
 // now start...
-$query = "SELECT shareBoard_title FROM shareBoard_info WHERE shareBoard_id = :sbid";
-$stmt  = $pdo->prepare($query);
-$stmt->execute(
-    array(
-        ':sbid' => $shareBoard_id
-    )
-);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if ($row == false) {
-    $_SESSION['failure'] = "Internal error";
-    header("Location: index.php");
-    return;
-}
-$shareBoard_title = htmlentities($row['shareBoard_title']);
+$shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
 
 // Now really starting...
 if (isset($_POST['cancel'])) {

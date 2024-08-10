@@ -1,39 +1,27 @@
 <!-- (c)2024 Jeongwoo Kim, KNU CSE -->
 <?php
 require_once "dbaccess.php";
+require_once "otd_validation_api.php";
+require_once "otd_shareBoard_validation_api.php";
+
 session_start();
 
-if (isset($_SESSION['user_id']) === false) {
-    $_SESSION['failure'] = "Not logged in";
-    header("Location: index.php");
-    return;
-}
+checkIfLoggedIn();
 
 $shareBoard_id = false;
 $is_admin = false;
 $shareBoard_title = false;
 
 // Basic check
-if (isset($_GET['board']) === false) {
-    $_SESSION['failure'] = "Board id doesn't exist";
-    header("Location: index.php");
+$shareBoard_id = checkGetBoardDataExists();
+if ($shareBoard_id === false) {
     return;
-} else {
-    $shareBoard_id = $_GET['board'];
 }
 
 // Validation
-$query = "SELECT user_role FROM shareBoard_users WHERE shareBoard_id = :sbid AND user_id = :usid";
-$stmt  = $pdo->prepare($query);
-$stmt->execute(
-    array(
-        ':sbid' => $shareBoard_id,
-        ':usid' => $_SESSION['user_key']
-    )
-);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$row = checkBoardAccessPermission($pdo, $shareBoard_id);
 if ($row == false) {
-    $_SESSION['failure'] = "You have no permission to view this very board or board id doesn't exist";
+    $_SESSION['failure'] = "You have no permission to edit this very board or board id doesn't exist";
     header("Location: index.php");
     return;
 } else {
@@ -43,15 +31,7 @@ if ($row == false) {
 }
 
 // Get title
-$query = "SELECT shareBoard_title FROM shareBoard_info WHERE shareBoard_id = :sbid";
-$stmt  = $pdo->prepare($query);
-$stmt->execute(
-    array(
-        ':sbid' => $shareBoard_id
-    )
-);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-$shareBoard_title = htmlentities($row['shareBoard_title']);
+$shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
 
 ?>
 <!DOCTYPE html>

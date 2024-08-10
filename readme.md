@@ -14,6 +14,8 @@
 >> 5. Interaction between your web server and your database server via localhost, or vice versa.
 
 ### Version History
+##### Current version: 0.2.3
+
     0.0.1
         - Initial commit
 
@@ -37,3 +39,8 @@
 
     0.2.2
         - minor bug fix
+
+
+    0.2.3
+        - The basic logics of the shareBoard todo management system has been modularized into functions and converted into a set of APIs.
+        - bug fix for shareBoard creating feature
