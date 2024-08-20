@@ -145,6 +145,33 @@ $shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
                 ?>
                 </table>
             </p>
+            <hr color = "#000000" noshade/>
+            <h3>Threads</h3>
+            <p>
+                <a href = "otd_threads_create.php?board=<?= $shareBoard_id ?>">Start a Thread</a>
+                <?php
+                $stmt = $pdo->prepare("SELECT Threads.thread_id, thread_title, thread_recent FROM Threads JOIN Threads_data ON Threads.thread_id = Threads_data.thread_id WHERE shareBoard_id = :sbid ORDER BY thread_recent DESC");
+                $stmt->execute(
+                    array(
+                        'sbid' => $shareBoard_id
+                    )
+                );
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($row === false) {
+                    echo('<h3>No threads found' . "</h3>\n");
+                } else {
+                    echo('<ul>');
+                    do {
+                        echo('<li><a href = "otd_threads_view.php?board=' . $shareBoard_id . '&thread=' . $row['thread_id'] . '">');
+                        echo('Title: ' . $row['thread_title'] . ' Update: ' . $row['thread_recent']);
+                        echo('</a></li>');
+                    } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));
+                    echo('</ul>');
+                }
+                ?>
+            </p>
+            <hr color = "#000000" noshade/>
             <?php
             if ($is_admin === true) {
                 echo("<p>");

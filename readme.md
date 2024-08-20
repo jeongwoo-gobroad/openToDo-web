@@ -12,11 +12,11 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
 >> 1. Your own web server.
 >> 2. Your own database.
 >> 3. PDO-based database access should be done on the file names 'dbaccess.php'
->> 4. Please refer to the attached [.pptx] file for the database structure.
+>> 4. Please refer to the attached [.pptx] file for the database schema.
 >> 5. Interaction between your web server and your database server via localhost, or vice versa.
 
 ### Version History
-##### Current version: 0.2.3
+##### Current version: 0.3.2
 
     0.0.1
         - Initial commit
@@ -46,3 +46,8 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
     0.2.3
         - The basic logics of the shareBoard todo management system has been modularized into functions and converted into a set of APIs.
         - bug fix for shareBoard creating feature
+
+
+    0.3.2
+        - Threads feature implemented(Creating threads, Leaving a comment)
+        - Thread editing / deleting, Thread comment editing / deleting feature will be implemented.
