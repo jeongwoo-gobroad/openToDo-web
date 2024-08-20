@@ -1,9 +1,9 @@
-# openToDo::Web [API Page]
+# openToDo::Web [Methods Page]
 ### (c) 2024 Jeongwoo Kim
 ## An open-source project of platform-independent, web-based personal Todos management system
 ###### License: MIT License
 
-> Basic validation APIs of the personal todo management system
+> Basic validation Methods of the personal todo management system
 > 1. checkIfLoggedIn()
 >>
 >>      This function checks if the user has already been logged in, using $_SESSION datas.
@@ -20,7 +20,7 @@
 >>      RETURNS: Boolean Values
 
 
-> Basic APIs for the shareBoard todo management system
+> Basic Methods for the shareBoard todo management system
 > 1. checkGetBoardDataExists()
 >>
 >>      This function checks if $_GET has an appropriate board id data.
@@ -38,7 +38,7 @@
 
 > 4. getShareboardTitle($pdo_object, $shareBoard_id)
 >>      
->>      This function returns shareBoard title in the string format.
+>>      This function returns shareBoard title in string format.
 >>      RETURNS: String, or if failed, redirection to the main page occurs.
 
 > 5. checkUserAbleToAlter($pdo_object, $todo_id)
@@ -56,3 +56,35 @@
 >>
 >>      This function checks if the session user is the admin of the given shareBoard.
 >>      RETURNS: Boolean Values
+
+
+> Basic Methods for the shareBoard todo management system
+> 1. checkGetThreadExists()
+>>
+>>      This function checks if $_GET has an appropriate thread id data.
+>>      RETURNS: Boolean Values
+
+> 2. checkThreadPermission($pdo, $shareBoard_id)
+>>
+>>      This function checks if the session user has the permission to access the thread.
+>>      RETURNS: Boolean Values
+
+> 3. getThreadTitle($pdo, $thread_id)
+>>
+>>      This function returns thread title in string format.
+>>      RETURNS: String, or if failed, redirection to the main page occurs.
+
+> 4. checkUserIsAdminOfTheThread($pdo, $thread_id)
+>>      
+>>      This function returns shareBoard title in string format.
+>>      RETURNS: String, or if failed, redirection to the main page occurs.
+
+> 5. getThreadDetails($pdo, $thread_id)
+>>
+>>      This function returns thread details in string format.
+>>      RETURNS: String, or if failed, redirection to the main page occurs.
+
+> 6. getThreadRecent($pdo, $thread_id)
+>>
+>>      This function returns the value when the thread was last updated in string format.
+>>      RETURNS: String, or if failed, redirection to the main page occurs.
