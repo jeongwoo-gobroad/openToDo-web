@@ -17,6 +17,7 @@ $thread_title = false;
 $thread_details = false;
 $thread_last_update = false;
 $is_thread_owner = false;
+$thread_owner_name = false;
 
 // Basic check
 $shareBoard_id = checkGetBoardDataExists();
@@ -44,6 +45,18 @@ $thread_owner       = getThreadOwner($pdo, $thread_id);
 
 if ($thread_owner == $_SESSION['user_key']) {
     $is_thread_owner = true;
+}
+
+$query = "SELECT user_name FROM Users WHERE user_id = :id";
+$stmt  = $pdo->prepare($query);
+$stmt->execute(
+    array(
+        ':id'  => $thread_owner
+    )
+);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($row !== false) {
+    $thread_owner_name = $row['user_name'];
 }
 
 if (isset($_POST['comment'])) {
@@ -107,11 +120,14 @@ if (isset($_POST['comment'])) {
                     unset($_SESSION['success']);
                 }
             ?>
+            <p>Details:</p>
             <p>
                 <?= $thread_details ?>
             </p>
+            <hr color = "#000000" noshade/>
             <h6>Thread id: <?= $thread_id ?></h6>
             <h6>Last update: <?= $thread_last_update ?></h6>
+            <h6>Thread by: <?= $thread_owner_name ?></h6>
             <?php
             if ($is_thread_owner === true) {
                 echo('<ul>');
@@ -150,13 +166,13 @@ if (isset($_POST['comment'])) {
                 do {
                     if ($row['user_id'] == $_SESSION['user_key']) {
                         echo('<li>');
-                        echo('Comment: ' . $row['comment_details'] . ' When: ' . $row['comment_date']);
-                        echo('<a href = "otd_threads_comment_del.php?board=' . $shareBoard_id . '&thread=' . $thread_id . '&comment=' . $row['comment_id'] . '"> Delete</a>');
-                        echo('<a href = "otd_threads_comment_edit.php?board=' . $shareBoard_id . '&thread=' . $thread_id . '&comment=' . $row['comment_id'] . '"> Edit</a>');
+                        echo('Comment: ' . $row['comment_details'] . ' When: ' . $row['comment_date'] . ' By: ' . $row['user_name']);
+                        echo('<a href = "otd_threads_comment_del.php?board=' . $shareBoard_id . '&thread=' . $thread_id . '&comment=' . $row['comment_id'] . '"> | Delete</a>');
+                        echo('<a href = "otd_threads_comment_edit.php?board=' . $shareBoard_id . '&thread=' . $thread_id . '&comment=' . $row['comment_id'] . '"> | Edit</a>');
                         echo('</li>');
                     } else {
                         echo('<li>');
-                        echo('Comment: ' . $row['comment_details'] . ' When: ' . $row['comment_date']);
+                        echo('Comment: ' . $row['comment_details'] . ' When: ' . $row['comment_date'] . ' By: ' . $row['user_name']);
                         echo('</li>');
                     }
                 } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));

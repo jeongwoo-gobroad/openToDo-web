@@ -150,7 +150,8 @@ $shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
             <p>
                 <a href = "../threads/otd_threads_create.php?board=<?= $shareBoard_id ?>">Start a Thread</a>
                 <?php
-                $stmt = $pdo->prepare("SELECT Threads.thread_id, thread_title, thread_recent FROM Threads JOIN Threads_data ON Threads.thread_id = Threads_data.thread_id WHERE shareBoard_id = :sbid ORDER BY thread_recent DESC");
+                $stmt = $pdo->prepare("SELECT Threads.thread_id, thread_title, thread_recent, user_name FROM Threads JOIN Threads_data JOIN
+                                       Users ON Threads.thread_id = Threads_data.thread_id AND Threads.user_id = Users.user_id WHERE shareBoard_id = :sbid ORDER BY thread_recent DESC");
                 $stmt->execute(
                     array(
                         'sbid' => $shareBoard_id
@@ -164,7 +165,7 @@ $shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
                     echo('<ul>');
                     do {
                         echo('<li><a href = "../threads/otd_threads_view.php?board=' . $shareBoard_id . '&thread=' . $row['thread_id'] . '">');
-                        echo('Title: ' . $row['thread_title'] . ' / Update: ' . $row['thread_recent']);
+                        echo('Title: ' . $row['thread_title'] . ' / Update: ' . $row['thread_recent'] . ' / by: ' . $row['user_name']);
                         echo('</a></li>');
                     } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));
                     echo('</ul>');
