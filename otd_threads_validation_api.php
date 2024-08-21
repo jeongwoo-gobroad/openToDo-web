@@ -5,7 +5,7 @@
 function checkGetThreadExists() {
     if (isset($_GET['thread']) === false) {
         $_SESSION['failure'] = "thread id doesn't exist";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return false;
     }
 
@@ -44,7 +44,7 @@ function getThreadTitle($pdo, $thread_id) {
 
     if ($row == false) {
         $_SESSION['failure'] = "Internal error";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return;
     }
 
@@ -85,7 +85,7 @@ function getThreadDetails($pdo, $thread_id) {
 
     if ($row == false) {
         $_SESSION['failure'] = "Internal error";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return;
     }
 
@@ -107,7 +107,7 @@ function getThreadRecent($pdo, $thread_id) {
 
     if ($row == false) {
         $_SESSION['failure'] = "Internal error";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return;
     }
 
@@ -129,7 +129,7 @@ function getThreadOwner($pdo, $thread_id) {
 
     if ($row == false) {
         $_SESSION['failure'] = "Internal error";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return;
     }
 
