@@ -103,4 +103,4 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
                 |    |---otd_threads_view.php
         - Note: 'href's and 'Location: 's work based on relative paths.
                 But 'require_once' works based on absolute paths, so you need to adjust those to match your system.
-        - More details on openToDo_Architecture.pptx
+        - More details on openToDo_Architecture.pptx.
