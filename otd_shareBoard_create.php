@@ -112,7 +112,9 @@ if ( isset($_SESSION['failure']) === true) {
 ?>
 <form method="POST">
     <label for="title">shareBoard Title: (up to 120 letters)</label>
-    <input type="text" name="title" id="title"><br/>
+    <p>
+        <textarea style="resize: none;width:600px;height:50px;" name = "title" id = "title"></textarea>
+    </p>
     <p>Password should be at least 10 digits long, including digits, alphabets, special characters</p>
     <label for="pass_1">Password: </label>
     <input type="password" name="pass" id="pass_1"><br/>

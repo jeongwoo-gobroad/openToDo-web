@@ -16,7 +16,7 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
 >> 5. Interaction between your web server and your database server via localhost, or vice versa.
 
 ### Version History
-##### Current version: 0.3.2
+##### Current version: 0.5.0
 
     0.0.1
         - Initial commit
@@ -51,3 +51,9 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
     0.3.2
         - Threads feature implemented(Creating threads, Leaving a comment)
         - Thread editing / deleting, Thread comment editing / deleting feature will be implemented.
+
+    
+    0.5.0
+        - The thread feature has been fully implemented.
+        - Supported thread related features: creating a thread, leaving a comment, editing a thread, deleting a thread, editing a comment, deleting a comment
+        - HTML textarea implemented.

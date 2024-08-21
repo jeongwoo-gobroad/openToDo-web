@@ -77,9 +77,13 @@ if (isset($_POST['save'])) {
                 <label for = "Date">Date: </label>
                 <input type = "date" name = "date" id = "Date" value = "<?= $usr_date ?>"></br>
                 <label for = "Title">Title: (up to 120 letters)</label>
-                <input type = "textarea" name = "title" id = "Title" value = "<?= $usr_title ?>"></br>
+                <p>
+                    <textarea style="resize: none;width:600px;height:50px;" name = "title" id = "title"><?= $usr_title ?></textarea>
+                </p>
                 <label for = "Details">Details: (up to 500 letters)</label>
-                <input type = "textarea" name = "details" id = "Details" value = "<?= $usr_details ?>" style="width:300px;height:200px;font-size:15px;"></br>
+                <p>
+                    <textarea style="resize: none;width:600px;height:200px;" name = "details" id = "Details"><?= $usr_details ?></textarea>
+                </p>
                 <label for = "Priority">Priority: </label>
                 <select name = "priority" id = "Priority">
                     <option value = "" selected><?= $usr_pnum ?></option>
