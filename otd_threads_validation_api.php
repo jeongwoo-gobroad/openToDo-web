@@ -115,4 +115,70 @@ function getThreadRecent($pdo, $thread_id) {
 
     return $thread_recent;
 }
+
+// Function #6: Getting thread's owner
+function getThreadOwner($pdo, $thread_id) {
+    $query = "SELECT user_id FROM Threads WHERE thread_id = :tid";
+    $stmt  = $pdo->prepare($query);
+    $stmt->execute(
+        array(
+            ':tid' => $thread_id
+        )
+    );
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row == false) {
+        $_SESSION['failure'] = "Internal error";
+        header("Location: index.php");
+        return;
+    }
+
+    $thread_owner = htmlentities($row['user_id']);
+
+    return $thread_owner;
+}
+
+// Function #7: Getting comment's owner
+function getCommentOwner($pdo, $comment_id) {
+    $query = "SELECT user_id FROM Threads_comment WHERE comment_id = :cid";
+    $stmt  = $pdo->prepare($query);
+    $stmt->execute(
+        array(
+            ':cid' => $comment_id
+        )
+    );
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row == false) {
+        $_SESSION['failure'] = "Internal error";
+        header("Location: index.php");
+        return;
+    }
+
+    $comment_owner = htmlentities($row['user_id']);
+
+    return $comment_owner;
+}
+
+// Function #8: Getting comment details
+function getCommentDetails($pdo, $comment_id) {
+    $query = "SELECT comment_details FROM Threads_comment WHERE comment_id = :cid";
+    $stmt  = $pdo->prepare($query);
+    $stmt->execute(
+        array(
+            ':cid' => $comment_id
+        )
+    );
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row == false) {
+        $_SESSION['failure'] = "Internal error";
+        header("Location: index.php");
+        return;
+    }
+
+    $comment_details = htmlentities($row['comment_details']);
+
+    return $comment_details;
+}
 ?>

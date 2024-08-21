@@ -58,7 +58,7 @@
 >>      RETURNS: Boolean Values
 
 
-> Basic Methods for the shareBoard todo management system
+> Basic Methods for the thread management system
 > 1. checkGetThreadExists()
 >>
 >>      This function checks if $_GET has an appropriate thread id data.
@@ -87,4 +87,14 @@
 > 6. getThreadRecent($pdo, $thread_id)
 >>
 >>      This function returns the value when the thread was last updated in string format.
+>>      RETURNS: String, or if failed, redirection to the main page occurs.
+
+> 7. getCommentOwner($pdo, $comment_id)
+>>
+>>      This function returns the user_id of the given comment_id.
+>>      RETURNS: Integer, or if failed, redirection to the main page occurs.
+
+> 8. getCommentDetails($pdo, $comment_id)
+>>
+>>      This function returns the detailed content of the given comment_id.
 >>      RETURNS: String, or if failed, redirection to the main page occurs.

@@ -103,9 +103,15 @@ if (isset($_POST['start'])) {
         ?>
         <form method="POST">
             <label for="title">Thread Title: (up to 120 letters)</label>
-            <input type="text" name="title" id="title"><br/>
+            <!--<input type="text" name="title" value="" style="width:600px;height:50px;font-size:15px;" id="title"><br/>-->
+            <p>
+                <textarea style="resize: none;width:600px;height:50px;" name = "title" id = "title"></textarea>
+            </p>
             <label for = "Details">Details: (up to 500 letters)</label>
-            <input type = "textarea" name = "details" id = "Details" style="width:300px;height:200px;font-size:15px;"></br>
+            <!--<input type = "textarea" name = "details" value="" id = "Details" cols = "30" rows="10" style="width:600px;height:200px;font-size:15px;"></br>-->
+            <p>
+                <textarea style="resize: none;width:600px;height:200px;" name = "details" id = "Details"></textarea>
+            </p>
             <input type="submit" name="start" value="Start">
             <input type="submit" name="cancel" value="Cancel">
         </form>

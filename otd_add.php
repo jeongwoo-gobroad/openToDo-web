@@ -58,9 +58,13 @@ if (isset($_POST['add'])) {
                 <label for = "Date">Date: </label>
                 <input type = "date" name = "date" id = "Date"></br>
                 <label for = "Title">Title: (up to 120 letters)</label>
-                <input type = "textarea" name = "title" id = "Title"></br>
+                <p>
+                    <textarea style="resize: none;width:600px;height:50px;" name = "title" id = "title"></textarea>
+                </p>
                 <label for = "Details">Details: (up to 500 letters)</label>
-                <input type = "textarea" name = "details" id = "Details" style="width:300px;height:200px;font-size:15px;"></br>
+                <p>
+                    <textarea style="resize: none;width:600px;height:200px;" name = "details" id = "Details"></textarea>
+                </p>
                 <label for = "Priority">Priority: </label>
                 <select name = "priority" id = "Priority">
                     <option value = "1">1(Least important)</option>
