@@ -5,7 +5,7 @@
 function checkGetBoardDataExists() {
     if (isset($_GET['board']) === false) {
         $_SESSION['failure'] = "Board id doesn't exist";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return false;
     } 
 
@@ -16,7 +16,7 @@ function checkGetBoardDataExists() {
 function checkGetTodoExists() {
     if (isset($_GET['todo_id']) === false) {
         $_SESSION['failure'] = "Todo id doesn't exist";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return false;
     }
 
@@ -51,7 +51,7 @@ function getShareboardTitle($pdo, $shareBoard_id) {
 
     if ($row == false) {
         $_SESSION['failure'] = "Internal error";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return;
     }
 
@@ -73,7 +73,7 @@ function checkUserAbleToAlter($pdo, $todo_id) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row['is_shared'] == 0 && $row['user_id'] != $_SESSION['user_key']) {
         $_SESSION['failure'] = "You have no permission to delete this todo";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return false;
     }
 
@@ -106,14 +106,14 @@ function checkUserIsAdmin($pdo, $shareBoard_id) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row == false) {
         $_SESSION['failure'] = "You have no permission to view this very board or board id doesn't exist";
-        header("Location: index.php");
+        header("Location: ../index.php");
         return false;
     } else {
         if ($row['user_role'] == 1) {
             $is_admin = true;
         } else {
             $_SESSION['failure'] = "You have no permission to view this very board or board id doesn't exist";
-            header("Location: index.php");
+            header("Location: ../index.php");
             return false;
         }
     }
