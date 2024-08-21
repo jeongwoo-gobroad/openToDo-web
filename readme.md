@@ -66,7 +66,7 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
             -> /
                 |---accountInfoView.php
                 |---bootstrap.php
-                |--- credits.php
+                |---credits.php
                 |---dbaccess.php
                 |---index.php
                 |---login.php
