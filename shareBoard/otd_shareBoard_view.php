@@ -164,7 +164,7 @@ $shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
                     echo('<ul>');
                     do {
                         echo('<li><a href = "../threads/otd_threads_view.php?board=' . $shareBoard_id . '&thread=' . $row['thread_id'] . '">');
-                        echo('Title: ' . $row['thread_title'] . ' Update: ' . $row['thread_recent']);
+                        echo('Title: ' . $row['thread_title'] . ' / Update: ' . $row['thread_recent']);
                         echo('</a></li>');
                     } while ($row = $stmt->fetch(PDO::FETCH_ASSOC));
                     echo('</ul>');

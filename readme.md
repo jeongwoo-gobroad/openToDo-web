@@ -14,10 +14,10 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
 >> 3. PDO-based database access should be done on the file 'dbaccess.php'.
 >> 4. Please refer to the attached [.pptx] file for the database schema.
 >> 5. Interaction between your web server and your database server via localhost, or vice versa.
->> 6. [IMPORTANT] Modify the absolute/relative paths in the above source code to match your system; Please refer to the version history.
+>> 6. [IMPORTANT] Modify the absolute/relative paths in the above source code to match your system; Please refer to the version history 0.7.0.
 
 ### Version History
-##### Current version: 0.7.0
+##### Current version: 0.7.1
 
     0.0.1
         - Initial commit
@@ -104,3 +104,7 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
         - Note: 'href's and 'Location: 's work based on relative paths.
                 But 'require_once' works based on absolute paths, so you need to adjust those to match your system.
         - More details on openToDo_Architecture.pptx.
+
+    
+    0.7.1
+        - Typo fix
