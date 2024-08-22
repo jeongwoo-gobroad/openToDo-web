@@ -12,12 +12,12 @@ checkIfLoggedIn();
 <html>
 <head>
     <?php require_once "/volume1/web/openToDo_web/bootstrap.php"; ?>
-    <title>openToDo::WEB - shareBoard List Page</title>
+    <title>openToDo::WEB - ShareBoard List Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="container">
-    <h1>shareBoard List of <?= $_SESSION['user_name'] ?></h1>
+    <h1>ShareBoard List of <?= $_SESSION['user_name'] ?></h1>
     <hr color = "#000000" noshade/>
     <?php
         $query = "SELECT shareBoard_title, shareBoard_info.shareBoard_id, user_role FROM shareBoard_users JOIN shareBoard_info ON 

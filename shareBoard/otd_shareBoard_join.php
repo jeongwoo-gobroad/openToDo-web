@@ -20,7 +20,7 @@ if ( isset($_POST['sbid']) && isset($_POST['pass'])) {
     $pass = htmlentities($_POST['pass']);
 
     if ( strlen($sbid) < 1 || strlen($pass) < 1 ) {
-        $_SESSION['failure'] = "shareBoard ID and password are required";
+        $_SESSION['failure'] = "ShareBoard ID and password are required";
         header("Location: otd_shareBoard_join.php");
         return;
     } else {
@@ -31,7 +31,7 @@ if ( isset($_POST['sbid']) && isset($_POST['pass'])) {
         $row = $query->fetch(PDO::FETCH_ASSOC);
         
         if ($row == false) {
-            $_SESSION['failure'] = "Wrong shareBoard ID or Password";
+            $_SESSION['failure'] = "Wrong ShareBoard ID or Password";
             header("Location: otd_shareBoard_join.php");
             return;
         } else {
@@ -51,12 +51,12 @@ if ( isset($_POST['sbid']) && isset($_POST['pass'])) {
 <html>
 <head>
 <?php require_once "/volume1/web/openToDo_web/bootstrap.php"; ?>
-<title>openToDo::WEB - shareBoard Join Page</title>
+<title>openToDo::WEB - ShareBoard Join Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">
-<h1>shareBoard Join</h1>
+<h1>Join a ShareBoard</h1>
 <hr color = "#000000" noshade/>
 <?php
 if ( isset($_SESSION['failure']) === true) {
@@ -65,7 +65,7 @@ if ( isset($_SESSION['failure']) === true) {
 }
 ?>
 <form method="POST">
-    <label for="sbid">shareBoard ID: </label>
+    <label for="sbid">ShareBoard ID: </label>
     <input type="text" name="sbid" id="sbid"><br/>
     <label for="pass_1">Password: </label>
     <input type="password" name="pass" id="pass_1"><br/>

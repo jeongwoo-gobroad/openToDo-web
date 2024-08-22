@@ -47,7 +47,7 @@ $shareBoard_title = getShareboardTitle($pdo, $shareBoard_id);
             <?php echo "<h6>Board id: " . $shareBoard_id . "</h6>"; ?>
             <hr color = "#000000" noshade/>
             <p><a href = "../index.php">Go to main page</a></p>
-            <p><a href = "otd_shareBoard_add.php?board=<?= $shareBoard_id ?>">Add a new shareBoard ToDo</a></p>
+            <p><a href = "otd_shareBoard_add.php?board=<?= $shareBoard_id ?>">Add a new ShareBoard ToDo</a></p>
             <p>
                 <?php
                 if ( isset($_SESSION['failure']) ) {
