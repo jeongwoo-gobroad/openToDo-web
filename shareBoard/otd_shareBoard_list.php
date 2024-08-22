@@ -17,7 +17,7 @@ checkIfLoggedIn();
 </head>
 <body>
     <div class="container">
-    <h1>ShareBoard List of <?= $_SESSION['user_name'] ?></h1>
+    <h1>Participated ShareBoard List of <?= $_SESSION['user_name'] ?></h1>
     <hr color = "#000000" noshade/>
     <?php
         $query = "SELECT shareBoard_title, shareBoard_info.shareBoard_id, user_role FROM shareBoard_users JOIN shareBoard_info ON 
