@@ -27,9 +27,9 @@
             echo "<h3>Hello, " . htmlentities($_SESSION['user_name']) . "</h3>\n";
             echo "<ul>";
             echo '<li><h5><a href = "myTodo/otd_view.php">Dive Into Your ToDos!</a></h5></li>';
-            echo '<li><h5><a href = "shareBoard/otd_shareBoard_create.php">Create shareBoard</a></h5></li>';
-            echo '<li><h5><a href = "shareBoard/otd_shareBoard_join.php">Join shareBoard</a></h5></li>';
-            echo '<li><h5><a href = "shareBoard/otd_shareBoard_list.php">My shareBoards lists</a></h5></li>';
+            echo '<li><h5><a href = "shareBoard/otd_shareBoard_create.php">Create a ShareBoard</a></h5></li>';
+            echo '<li><h5><a href = "shareBoard/otd_shareBoard_join.php">Join a ShareBoard</a></h5></li>';
+            echo '<li><h5><a href = "shareBoard/otd_shareBoard_list.php">Participated ShareBoards lists</a></h5></li>';
             echo '<li><p><a href="logout.php">Log out</a></p></li>';
             echo "</ul>";
         } else {

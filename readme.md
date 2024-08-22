@@ -17,7 +17,7 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
 >> 6. [IMPORTANT] Modify the absolute/relative paths in the above source code to match your system; Please refer to the version history 0.7.0.
 
 ### Version History
-##### Current version: 0.7.2
+##### Current version: 0.7.3
 
     0.0.1
         - Initial commit
@@ -112,3 +112,7 @@ Please feel free to visit demo website: http://jeongwoo-kim-web.myds.me/openToDo
     
     0.7.2
         - Added feature for presenting user names on the thread; Thread creator and comment writer.
+
+
+    0.7.3
+        - Typo fix (shareBoard -> ShareBoard)

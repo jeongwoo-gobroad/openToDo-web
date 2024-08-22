@@ -97,12 +97,12 @@ if ( isset($_POST['title']) && isset($_POST['pass']) && isset($_POST['pass_a']))
 <html>
 <head>
 <?php require_once "/volume1/web/openToDo_web/bootstrap.php"; ?>
-<title>openToDo::WEB - shareBoard Creating Page</title>
+<title>openToDo::WEB - ShareBoard Creating Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">
-<h1>shareBoard Creation</h1>
+<h1>Create a ShareBoard</h1>
 <hr color = "#000000" noshade/>
 <?php
 if ( isset($_SESSION['failure']) === true) {
@@ -111,7 +111,7 @@ if ( isset($_SESSION['failure']) === true) {
 }
 ?>
 <form method="POST">
-    <label for="title">shareBoard Title: (up to 120 letters)</label>
+    <label for="title">ShareBoard Title: (up to 120 letters)</label>
     <p>
         <textarea style="resize: none;width:600px;height:50px;" name = "title" id = "title"></textarea>
     </p>
