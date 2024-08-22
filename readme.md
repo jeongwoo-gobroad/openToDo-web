@@ -7,6 +7,7 @@
 > Based on php 7.4, MariaDB 10, phpMyAdmin 5.2.1.
 
 Please feel free to visit my demo website: http://jeongwoo-kim-web.myds.me/openToDo_web/
+
 Please feel free to take a look at the demo video: https://youtu.be/_O2qMlvNEKM
 
 > Prerequisities
